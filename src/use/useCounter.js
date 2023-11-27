@@ -1,10 +1,12 @@
 import { reactive, computed, watch, onMounted, nextTick } from 'vue'
 
+// to make this reactive global, put this counterData outside of the function
+const counterData = reactive({
+  count: 0,
+  title: 'My Title'
+})
+
 export function useCounter(){
-  const counterData = reactive({
-    count: 0,
-    title: 'My Title'
-  })
 
   watch(() => counterData.count, (newCount, oldCount) => {
     if(newCount === 20) {
