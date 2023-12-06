@@ -1,12 +1,7 @@
-
-
 <template>
   <div class="user-data">
-    {{ userData.name }} @{{ userData.username }} |
-    Network Status:
-    <span
-      :style="{ color: online ? 'green' : 'red' }"
-    >
+    {{ userData.name }} @{{ userData.username }} | Network Status:
+    <span :style="{ color: online ? 'green' : 'red' }">
       {{ online ? 'Online' : 'Offline' }}
     </span>
   </div>
@@ -17,32 +12,30 @@
     <RouterLink to="/posts">Posts</RouterLink>
   </nav>
 
-  <RouterView/>
+  <RouterView />
 </template>
 
 <script setup>
 /*
   imports
 */
-  import { reactive, provide } from "vue";
-  import { useOnline } from '@vueuse/core'
+import { reactive, provide } from 'vue';
+import { useOnline } from '@vueuse/core';
 
 /*
   user data
 */
-  const userData = reactive({
-    name: 'Danny',
-    username: 'dannyconnell',
+const userData = reactive({
+  name: 'Danny',
+  username: 'dannyconnell',
+});
 
-  })
-
-provide('userData', userData)
+provide('userData', userData);
 
 /*
   online status
 */
-const online = useOnline()
-
+const online = useOnline();
 </script>
 
 <style scoped>
@@ -64,7 +57,7 @@ nav {
 }
 
 nav a.router-link-exact-active {
-  color: var(--color-text);
+  color: #181818;
 }
 
 nav a.router-link-exact-active:hover {
@@ -81,7 +74,7 @@ nav a:first-of-type {
   border: 0;
 }
 
-.user-data{
+.user-data {
   position: absolute;
   background-color: beige;
   top: 0;

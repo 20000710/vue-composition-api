@@ -2,45 +2,44 @@
   <div class="home">
     <h2 ref="appTitleRef">{{ appTitle }}</h2>
 
-    <h3>{{ counterData.title }}:</h3>
+    <h3>Hard-coded counter title:</h3>
     <div>
-      <button @click="decreaseCounter(1)" class="btn">-</button>
-      <span class="counter">{{ counterData.count }}</span>
-      <button @click="increaseCounter(1, $event)" class="btn">+</button>
+      <button class="btn">-</button>
+      <span class="counter">0</span>
+      <button class="btn">+</button>
+      <button class="btn">++</button>
     </div>
 
-    <p>This counter is {{ oddOrEven }}</p>
+    <p>This counter is odd/even</p>
 
     <div class="edit">
       <h4>Edit counter title:</h4>
-      <input v-model="counterData.title" type="text" v-autofocus>
+      <input type="text" v-autofocus />
     </div>
   </div>
 </template>
 
 <!-- composition API -->
 <script setup>
-  import { onMounted, ref } from 'vue'
-  import { useCounter } from '@/use/useCounter'
-  import { vAutofocus } from '@/directives/vAutofocus'
+import { onMounted, ref } from 'vue';
+import { vAutofocus } from '@/directives/vAutofocus';
 
-  /*
-    app title
-  */
+/*
+  app title
+*/
 
-  // Non-reactive data
-  const appTitle = 'My Amazing Counter App'
-  const appTitleRef = ref(null)
+// Non-reactive data
+const appTitle = 'My Amazing Counter App';
+const appTitleRef = ref(null);
 
-  onMounted(() => {
-    console.log(`The app title is ${appTitleRef.value.offsetWidth} px wide!`)
-  })
+onMounted(() => {
+  console.log(`The app title is ${appTitleRef.value.offsetWidth} px wide!`);
+});
 
-  // const counter = ref(0),
-  //       counterTitle = ref('My Counter')
+// const counter = ref(0),
+//       counterTitle = ref('My Counter')
 
-
-  /*
+/*
     directives
   */
 //  // v-autofocus
@@ -49,12 +48,6 @@
 //     el.focus()
 //   }
 // }
-/*
-  counter
-*/
-
-const {counterData, oddOrEven, increaseCounter, decreaseCounter} = useCounter()
-
 </script>
 
 <!-- option API -->
@@ -96,15 +89,16 @@ export default {
 -->
 
 <style>
-  .home{
-    text-align: center;
-    padding: 20px;
-  }
-  .btn, .counter{
-    font-size: 40px;
-    margin: 10px;
-  }
-  .edit{
-    margin-top: 60px;
-  }
+.home {
+  text-align: center;
+  padding: 20px;
+}
+.btn,
+.counter {
+  font-size: 40px;
+  margin: 10px;
+}
+.edit {
+  margin-top: 60px;
+}
 </style>
